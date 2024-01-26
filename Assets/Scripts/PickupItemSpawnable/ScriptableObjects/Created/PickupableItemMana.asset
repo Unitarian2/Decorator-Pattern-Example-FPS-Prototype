@@ -15,4 +15,6 @@ MonoBehaviour:
   type: 1
   prefab: {fileID: 2220164925065523722, guid: af3ca9fbb53c6cc42ac51d2690094d8d, type: 3}
   despawnDelay: 15
-  spawnPos: {x: 0, y: 20, z: 0}
+  spawnPos: {x: 0, y: 20, z: 10.5}
+  statType: 1
+  statEffectAmount: 10

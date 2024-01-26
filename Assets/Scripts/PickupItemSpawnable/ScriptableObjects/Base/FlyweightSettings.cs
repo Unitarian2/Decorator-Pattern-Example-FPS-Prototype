@@ -30,5 +30,6 @@ public class FlyweightSettings : ScriptableObject
 public enum FlyweightType
 {
     Health,
-    Mana
+    Mana,
+    Weapon
 }

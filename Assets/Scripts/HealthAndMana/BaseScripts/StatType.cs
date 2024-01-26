@@ -3,5 +3,7 @@
 public enum StatType 
 {
     Health,
-    Mana
+    Mana,
+    Damage,
+    FireRate
 }

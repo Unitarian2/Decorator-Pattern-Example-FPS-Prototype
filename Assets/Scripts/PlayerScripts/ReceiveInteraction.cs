@@ -42,6 +42,19 @@ public class ReceiveInteraction : Subject
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("AutoPickupable"))
+        {
+            if (other.gameObject.TryGetComponent(out IAutoPickupable pickupableItem))
+            {
+                Debug.LogWarning(pickupableItem.GetSettings().type);
+                pickupableItem.PickupThis();
+                NotifyObservers(pickupableItem.GetSettings().statType, pickupableItem.GetSettings().statEffectAmount);
+            }
+        }
+    }
+
     IEnumerator ReceiveInteractCooldown()
     {
         yield return new WaitForSeconds(1);

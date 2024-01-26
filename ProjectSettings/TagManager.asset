@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - ReceiveInteractable
-  - 
-  - 
+  - AutoPickupable
+  - Player
   - 
   - 
   - 

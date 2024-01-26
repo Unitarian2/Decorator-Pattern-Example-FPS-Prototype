@@ -7,6 +7,8 @@ public class PickupableItemSettings : FlyweightSettings
 {
     public float despawnDelay = 15f;
     public Vector3 spawnPos = new Vector3(0f, 20f, 0f);
+    public StatType statType;
+    public float statEffectAmount;
 
     public override Flyweight Create()
     {
