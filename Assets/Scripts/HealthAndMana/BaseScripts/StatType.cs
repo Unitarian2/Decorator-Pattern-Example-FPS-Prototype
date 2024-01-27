@@ -5,5 +5,6 @@ public enum StatType
     Health,
     Mana,
     Damage,
-    FireRate
+    RecklessDamage,
+    None
 }

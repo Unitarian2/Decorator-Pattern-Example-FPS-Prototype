@@ -22,7 +22,9 @@ public class PlayerMovement : Subject
     [Header("Movement Params")]
     [SerializeField] private float walkSpeed = 3.0f;
     [SerializeField] private float sprintSpeed = 6.0f;
- 
+    public float walkSpeedModifier = 0f;
+    [SerializeField] private float maxMovementModifier = 2.0f;
+
     [Header("Look Params")]
     [SerializeField, Range(1, 10)] private float lookSpeedX = 2.0f;
     [SerializeField, Range(1, 10)] private float lookSpeedY = 2.0f;
@@ -85,7 +87,7 @@ public class PlayerMovement : Subject
     private void HandleMovementInput()
     {
         
-        currentInput = new Vector2((IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
+        currentInput = new Vector2((IsSprinting ? sprintSpeed + walkSpeedModifier : walkSpeed + walkSpeedModifier) * Input.GetAxis("Vertical"), (IsSprinting ? sprintSpeed + walkSpeedModifier : walkSpeed + walkSpeedModifier) * Input.GetAxis("Horizontal"));
         //Debug.Log(new Vector2(walkSpeed * Input.GetAxis("Vertical"), walkSpeed * Input.GetAxis("Horizontal")));
         float moveDirectionY = moveDirection.y;
         moveDirection = (transform.forward * currentInput.x) + (transform.right * currentInput.y);
@@ -145,5 +147,11 @@ public class PlayerMovement : Subject
             
         }
         characterController.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void IncreaseMovementModifier(float Modifier)
+    {
+        walkSpeedModifier += Mathf.Clamp(Modifier, 0f, maxMovementModifier); ;
+        
     }
 }

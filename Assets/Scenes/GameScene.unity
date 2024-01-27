@@ -1546,6 +1546,8 @@ MonoBehaviour:
   jumpKey: 32
   walkSpeed: 3
   sprintSpeed: 6
+  walkSpeedModifier: 0
+  maxMovementModifier: 2
   lookSpeedX: 2
   lookSpeedY: 2
   upperLookLimit: 80
@@ -3323,6 +3325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
         type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 321996751}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1136385240}
@@ -3333,9 +3340,49 @@ PrefabInstance:
       objectReference: {fileID: 321996746}
     - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
         type: 3}
+      propertyPath: weaponDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 321996747}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
+      propertyPath: weaponDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 14a833179c0605946bd12a0602ad8462,
+        type: 2}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
+      propertyPath: weaponUpgradeDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 14a833179c0605946bd12a0602ad8462,
+        type: 2}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
       propertyPath: _playerInteractionSubject
       value: 
       objectReference: {fileID: 321996750}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
+      propertyPath: weaponUpgradeDefinitionDamage
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e349e59b780fae418126ee4bdf244c8,
+        type: 2}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
+      propertyPath: weaponUpgradeDefinitionFireRate
+      value: 
+      objectReference: {fileID: 11400000, guid: 07c47ffbd63638e45a955f6645b45912,
+        type: 2}
+    - target: {fileID: 7898701405184798384, guid: c20daf91d2bce304c85fec03f5fafd3b,
+        type: 3}
+      propertyPath: weaponUpgradeDefinitionRecklessDamage
+      value: 
+      objectReference: {fileID: 11400000, guid: 07c47ffbd63638e45a955f6645b45912,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8669,6 +8716,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c9592631f7abc8c4abe74b67f8b8bd64, type: 2}
   - {fileID: 11400000, guid: 6ea1d92a420a2164a9961aa1af53b11b, type: 2}
   pickupableParent: {fileID: 1161476611}
+  currentSpawnableIndex: 0
 --- !u!4 &1889566448
 Transform:
   m_ObjectHideFlags: 0

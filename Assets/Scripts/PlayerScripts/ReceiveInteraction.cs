@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class ReceiveInteraction : Subject
 {
     bool isInteractable;
+    public static event Action<WeaponUpgradeDefinition> OnWeaponUpgradePickedUp;
 
     private void Start()
     {
@@ -49,10 +51,24 @@ public class ReceiveInteraction : Subject
             if (other.gameObject.TryGetComponent(out IAutoPickupable pickupableItem))
             {
                 Debug.LogWarning(pickupableItem.GetSettings().type);
+                
+
+                if (other.gameObject.TryGetComponent(out WeaponUpgradeController controller))
+                {
+                    OnWeaponUpgradePickedUp?.Invoke(controller.weaponUpgradeDefinition);
+                }
+                else
+                {
+                    NotifyObservers(pickupableItem.GetSettings().statType, pickupableItem.GetSettings().statEffectAmount);
+                }
+                
+
+
                 pickupableItem.PickupThis();
-                NotifyObservers(pickupableItem.GetSettings().statType, pickupableItem.GetSettings().statEffectAmount);
             }
         }
+        
+
     }
 
     IEnumerator ReceiveInteractCooldown()

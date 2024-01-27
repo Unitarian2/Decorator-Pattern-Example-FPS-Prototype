@@ -56,6 +56,13 @@ public class PlayerStats : Subject, IObserver
         }
     }
 
+    //Manually damage the player
+    public void DamagePlayer(float amount)
+    {
+        OnNotify(StatType.Health, amount*-1);
+    }
+
+
     private void OnEnable()
     {
         _playerInteractionSubject.AddObserver(this);

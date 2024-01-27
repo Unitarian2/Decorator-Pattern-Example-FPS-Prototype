@@ -14,7 +14,7 @@ TagManager:
   - ReceiveInteractable
   - AutoPickupable
   - Player
-  - 
+  - WeaponUpgrader
   - 
   - 
   - 

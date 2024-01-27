@@ -31,5 +31,6 @@ public enum FlyweightType
 {
     Health,
     Mana,
-    Weapon
+    AddDamage,
+    AddRecklessDamage
 }

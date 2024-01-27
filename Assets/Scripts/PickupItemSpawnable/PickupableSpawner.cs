@@ -8,6 +8,8 @@ public class PickupableSpawner : MonoBehaviour
     public List<PickupableItemSettings> pickupableItemSettings;
     bool isSpawnActive;
     [SerializeField] private GameObject pickupableParent;
+
+    public int currentSpawnableIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +30,13 @@ public class PickupableSpawner : MonoBehaviour
     IEnumerator PickupableSpawnProcess()
     {
         yield return new WaitForSeconds(2);
-        int chosenIndex = UnityEngine.Random.Range(0,pickupableItemSettings.Count);
+        
 
-        var flyweight = PickupableFactory.Spawn(pickupableItemSettings[chosenIndex]);
+        var flyweight = PickupableFactory.Spawn(pickupableItemSettings[currentSpawnableIndex]);
         flyweight.transform.parent = pickupableParent.transform;
-        flyweight.transform.position = pickupableItemSettings[chosenIndex].spawnPos;
+        flyweight.transform.position = pickupableItemSettings[currentSpawnableIndex].spawnPos;
         SpawnSinglePickupable();
+
+        currentSpawnableIndex = (currentSpawnableIndex + 1) % pickupableItemSettings.Count;
     }
 }
