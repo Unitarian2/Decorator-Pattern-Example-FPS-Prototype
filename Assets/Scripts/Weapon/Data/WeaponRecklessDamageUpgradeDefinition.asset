@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3961d8553f6de0d4bb5ca425e61cb232, type: 3}
   m_Name: WeaponRecklessDamageUpgradeDefinition
   m_EditorClassIdentifier: 
-  value: 10
+  value: 1
   type: 2

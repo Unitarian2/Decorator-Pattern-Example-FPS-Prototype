@@ -13,5 +13,5 @@ public enum WeaponUpgradeType
 {
     None,
     Damage,
-    RecklessDamage
+    Firerate
 }

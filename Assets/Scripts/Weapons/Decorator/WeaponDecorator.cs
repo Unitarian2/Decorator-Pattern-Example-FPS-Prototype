@@ -11,8 +11,8 @@ public abstract class WeaponDecorator : IWeapon
         this.decoratedWeapon = decoratedWeapon;
     }
 
-    public virtual void Fire()
+    public virtual void Fire(Vector3 attackDirection)
     {
-        decoratedWeapon.Fire();
+        decoratedWeapon.Fire(attackDirection);
     }
 }

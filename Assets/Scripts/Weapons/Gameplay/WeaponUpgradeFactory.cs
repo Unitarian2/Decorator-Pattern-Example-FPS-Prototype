@@ -9,7 +9,7 @@ public static class WeaponUpgradeFactory
         return weaponDefinition.type switch
         {
             WeaponUpgradeType.Damage => new DamageUpgrade(weaponDefinition.value),
-            WeaponUpgradeType.RecklessDamage => new RecklessDamageUpgrade(weaponDefinition.value, playerMovement),
+            WeaponUpgradeType.Firerate => new RecklessDamageUpgrade(weaponDefinition.value, playerMovement),
             _ => new WeaponUpgrade(weaponDefinition.value)
         };
     }

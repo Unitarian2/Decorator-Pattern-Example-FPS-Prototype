@@ -12,10 +12,10 @@ public class WRateOfFireUpgrade : WeaponDecorator
         this.upgrade = upgrade;
     }
 
-    public override void Fire()
+    public override void Fire(Vector3 attackDirection)
     {
         controller.currentWeaponRateOfFire += upgrade.value;
-        base.Fire();
+        base.Fire(attackDirection);
         
         Debug.Log("Rate of fire upgraded!");
     }
