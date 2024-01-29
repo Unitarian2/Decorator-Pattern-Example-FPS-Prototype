@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
 {
     public bool isAlive;
     Vector3 moveDirection;
-    public float moveSpeed;
+    public BulletSettings settings;
 
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class BulletController : MonoBehaviour
 
     private void OnDisable()
     {
+        Debug.LogWarning("Disabled");
         isAlive = false;
     }
 
@@ -32,14 +33,18 @@ public class BulletController : MonoBehaviour
     {
         if (isAlive)
         {
-            transform.position += moveDirection * Time.deltaTime * moveSpeed;
+            transform.position += moveDirection * Time.deltaTime * settings.moveSpeed;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //Debug.LogError("Collided : "+ collision.collider.gameObject.name);
-        
-        Destroy(gameObject);
+        BulletFactory.ReturnToPool(this);
     }
+    
 
+}
+
+public enum BulletType
+{
+    BasicWeaponBullet
 }

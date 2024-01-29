@@ -6,6 +6,11 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private BulletFactory bulletFactory;
+    [SerializeField] private GameObject bulletSpawnParent;
+
+    //Weapon Settings
+    [SerializeField] private BulletSettings bulletSettings;
 
     public IWeaponUpgrade currentWeaponUpgrade;
     [SerializeField] WeaponUpgradeDefinition weaponUpgradeDefinition;
@@ -34,9 +39,6 @@ public class WeaponController : MonoBehaviour
     public Vector3 GizmoRaydirection = Vector3.forward;
     public float rayLength = 105f;
     public Color gizmoColor = Color.red;
-
-
-    
 
     private void Awake()
     {
@@ -134,7 +136,7 @@ public class WeaponController : MonoBehaviour
             targetPoint = ray.GetPoint(75);
         }
 
-        Vector3 attackDirection = targetPoint - barrelExitPoint.position;
+        Vector3 attackDirection = targetPoint - GetWeaponBarrelExitPoint();
         GizmoRaydirection = attackDirection;
         basicWeapon.Fire(attackDirection);
     }
@@ -155,16 +157,6 @@ public class WeaponController : MonoBehaviour
         return barrelExitPoint.position;
     }
 
-    public Vector3 GetCameraForwardVector()
-    {
-        // Silahýn rotasyonunu al
-        //Quaternion weaponRotation = gameObject.transform.rotation;
-
-        // Ýsteðe baðlý olarak yatay rotasyonu sýfýrlayabilirsiniz (örneðin, mermi yere paralel olsun isteniyorsa)
-        // weaponRotation = Quaternion.Euler(weaponRotation.eulerAngles.x, 0f, weaponRotation.eulerAngles.z);
-
-        return playerCamera.transform.forward;
-    }
 
     private void OnDrawGizmos()
     {
@@ -173,6 +165,16 @@ public class WeaponController : MonoBehaviour
         // Gizmo olarak belirlenmiþ yöne doðru bir ray çiz
         Gizmos.DrawRay(GetWeaponBarrelExitPoint(), GizmoRaydirection * rayLength);
        // Gizmos.DrawRay(ray);
+    }
+
+    public BulletSettings GetCurrentWeaponBulletSettings()
+    {
+        return bulletSettings;
+    }
+
+    public Transform GetBulletSpawnParent()
+    {
+        return bulletSpawnParent.transform;
     }
 
 }
