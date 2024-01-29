@@ -7,11 +7,11 @@ public class BulletController : MonoBehaviour
 {
     public bool isAlive;
     Vector3 moveDirection;
-     Rigidbody rb;
+    public float moveSpeed;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        
     }
     private void OnEnable()
     {
@@ -26,12 +26,20 @@ public class BulletController : MonoBehaviour
     public void StartMoving(Vector3 direction)
     {
         moveDirection = direction;
-        //rb.AddForce(direction, ForceMode.Impulse);
     }
 
     private void Update()
     {
-        transform.position += moveDirection * Time.deltaTime;
+        if (isAlive)
+        {
+            transform.position += moveDirection * Time.deltaTime * moveSpeed;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.LogError("Collided : "+ collision.collider.gameObject.name);
+        
+        Destroy(gameObject);
     }
 
 }
