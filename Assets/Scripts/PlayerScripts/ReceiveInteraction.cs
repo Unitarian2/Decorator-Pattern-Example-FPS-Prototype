@@ -53,7 +53,7 @@ public class ReceiveInteraction : Subject
                 Debug.LogWarning(pickupableItem.GetSettings().type);
                 
 
-                if (other.gameObject.TryGetComponent(out WeaponUpgradeController controller))
+                if (other.gameObject.TryGetComponent(out WeaponUpgradePickupable controller))
                 {
                     OnWeaponUpgradePickedUp?.Invoke(controller.weaponUpgradeDefinition);
                 }

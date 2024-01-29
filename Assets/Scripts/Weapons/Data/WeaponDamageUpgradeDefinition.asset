@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3961d8553f6de0d4bb5ca425e61cb232, type: 3}
-  m_Name: WeaponRecklessDamageUpgradeDefinition
+  m_Name: WeaponDamageUpgradeDefinition
   m_EditorClassIdentifier: 
-  value: 1
-  type: 2
+  value: 15
+  type: 1
+  prefab: {fileID: 3349842475957167772, guid: 43ba2dba0d440344498a7e472f1a14e1, type: 3}

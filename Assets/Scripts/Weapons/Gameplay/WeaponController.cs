@@ -9,10 +9,12 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private BulletFactory bulletFactory;
     [SerializeField] private GameObject bulletSpawnParent;
 
+    WeaponUpgradeController upgradeController;
+
     //Weapon Settings
     [SerializeField] private BulletSettings bulletSettings;
 
-    public IWeaponUpgrade currentWeaponUpgrade;
+    
     [SerializeField] WeaponUpgradeDefinition weaponUpgradeDefinition;
     [SerializeField] WeaponUpgradeDefinition weaponUpgradeDefinitionDamage;
     [SerializeField] WeaponUpgradeDefinition weaponUpgradeDefinitionRecklessDamage;
@@ -42,10 +44,11 @@ public class WeaponController : MonoBehaviour
 
     private void Awake()
     {
-        currentWeaponUpgrade = WeaponUpgradeFactory.Create(weaponUpgradeDefinition, playerMovement);
+        
         basicWeapon = new BasicWeapon(this);
 
         GizmoRaydirection = transform.forward;
+        upgradeController = GetComponent<WeaponUpgradeController>();
     }
 
     private void Start()
@@ -82,7 +85,7 @@ public class WeaponController : MonoBehaviour
                 // Hasar yükseltmesi eklenmiþ silah
                 IWeapon weaponWithDamageUpgrade = new WDamageUpgrade(basicWeapon, this, definition);
                 basicWeapon = weaponWithDamageUpgrade;
-
+                upgradeController.AddToUpgradeList(definition);
                 //IWeaponUpgrade newUpgrade = WeaponUpgradeFactory.Create(definition, null);
                 //if (newUpgrade is WeaponUpgrader upgrader)
                 //{
@@ -93,7 +96,7 @@ public class WeaponController : MonoBehaviour
             case WeaponUpgradeType.Firerate:
                 IWeapon weaponWithRateOfFireUpgrade = new WRateOfFireUpgrade(basicWeapon, this, definition);
                 basicWeapon = weaponWithRateOfFireUpgrade;
-
+                upgradeController.AddToUpgradeList(definition);
                 //IWeaponUpgrade newUpgrade2 = WeaponUpgradeFactory.Create(definition, playerMovement);
                 //if (newUpgrade2 is WeaponUpgrader upgrader2)
                 //{
